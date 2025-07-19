@@ -1,8 +1,9 @@
 /* Task 1: Assign text color #3D3D3D to body and p using a Sass variable */
+$text-color: #3d3d3d;
 body {
-    color: #3D3D3D;
+    color: $text-color;
 }
 
 p {
-    color: #3D3D3D;
+    color: $text-color;
 }
