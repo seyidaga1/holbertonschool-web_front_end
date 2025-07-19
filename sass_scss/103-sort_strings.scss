@@ -1,0 +1,47 @@
+/* FULLY AI */
+
+/* List to be sorted */
+$list_to_sort: 5, 3, 8, 1, 4;
+
+/* Function to find the minimum value in a list */
+@function find-min($list) {
+  $min: nth($list, 1);
+  @for $i from 2 through length($list) {
+    @if nth($list, $i) < $min {
+      $min: nth($list, $i);
+    }
+  }
+  @return $min;
+}
+
+/* Function to remove the first occurrence of a value */
+@function remove-first($list, $value) {
+  $new-list: ();
+  $removed: false;
+  @each $item in $list {
+    @if $item == $value and $removed == false {
+      $removed: true;
+    } @else {
+      $new-list: append($new-list, $item);
+    }
+  }
+  @return $new-list;
+}
+
+/* Main sorting function */
+@function sort($list) {
+  $result: ();
+  $temp-list: $list;
+
+  @while length($temp-list) > 0 {
+    $min: find-min($temp-list);
+    $result: append($result, $min);
+    $temp-list: remove-first($temp-list, $min);
+  }
+
+  @return $result;
+}
+
+/* Use the function and debug */
+$sorted_list: sort($list_to_sort);
+@debug $sorted_list;
