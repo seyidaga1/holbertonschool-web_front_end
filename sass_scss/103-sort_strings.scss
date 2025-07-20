@@ -60,4 +60,6 @@ $default-sort-order: a b c d e f g h i j k l m n o p q r s t u v w x y z !defaul
   // Return the sorted list
   @return $list;
 }
-@debug sort($list_to_sort);
+// Sonda sadəcə bu 2 sətir olsun:
+$list_sorted: sort($list_to_sort);
+@debug join($list_sorted, " ");
